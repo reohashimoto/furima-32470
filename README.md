@@ -1,77 +1,24 @@
-FurimaのER図
+# README
 
-## usersテーブル
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-| Column    | Type   | Options    |
-|---------- |------- |----------- |
-|email      |string  |null: false |
-|password   |string  |null: false |
-|nickname   |string  |null: false |
-|name       |string  |null: false |
-|birthday   |date    |null: false |
+Things you may want to cover:
 
-### Association
+* Ruby version
 
-- has_many :items
-- has_many :purchase
+* System dependencies
 
-## itemsテーブル
+* Configuration
 
-| Column       | Type      | Options                      |
-|------------- |-------    |----------------------------- |
-|product_name  |text       |null: false                   |
-|category      |string     |null: false                   |
-|price         |integer    |null: false                   |
-|explanation   |text       |null: false                   |
-|status        |text       |null: false                   |
-|user_id       |references |null: false, foreign_key: true|
+* Database creation
 
-### Association
+* Database initialization
 
-- belongs_to :user
-- has_many :purchases
+* How to run the test suite
 
-## purchaseテーブル
+* Services (job queues, cache servers, search engines, etc.)
 
-| Column       | Type      | Options                      |
-|------------- |-------    |----------------------------- |
-|user          |references |null: false, foreign_key: true|
-|item          |references |null: false, foreign_key: true|
+* Deployment instructions
 
-### Association
-
-- belongs_to :user
-- belongs_to :item
-- has_one :shipping_address
-- has_one :credit
-
-## shipping_addressテーブル
-
-| Column           | Type      | Options                       |
-|-------------     |-------    |------------------------------ |
-|postal_code       |integer    |null: false                    |
-|prefecture        |string     |null: false                    |
-|municipality      |string     |null: false                    |
-|address           |integer    |null: false                    |
-|building_name     |text       |                               |
-|telephone_number  |integer    |null: false                    |
-|purchase          |references |null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :purchase
-
-## creditテーブル
-
-| Column           | Type      | Options                       |
-|-------------     |-------    |------------------------------ |
-|card_number       |integer    |null: false                    |
-|expiration date   |date       |null: false                    |
-|security_code     |integer    |null: false                    |
-|purchase          |reference  |null: false, foreign_key: true |
-
-### association
-
-- belongs_to :purchase
-
-
+* ...
