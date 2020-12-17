@@ -2,13 +2,16 @@ FurimaのER図
 
 ## usersテーブル
 
-| Column    | Type   | Options    |
-|---------- |------- |----------- |
-|email      |string  |null: false |
-|password   |string  |null: false |
-|nickname   |string  |null: false |
-|name       |string  |null: false |
-|birthday   |date    |null: false |
+| Column              | Type   | Options                  |
+|-------------------- |------- |------------------------- |
+|email                |string  |null: false, unique: true |
+|encrypted_password   |string  |null: false               |
+|nickname             |string  |null: false               |
+|name(姓)              |string  |null: false              |
+|name(名)              |string  |null:false               |
+|name(セイ)            |string  |null:false                |
+|name(メイ)            |string  |null:false                |
+|birthday             |date    |null: false               |
 
 ### Association
 
@@ -22,6 +25,9 @@ FurimaのER図
 |product_name  |text       |null: false                   |
 |category      |string     |null: false                   |
 |price         |integer    |null: false                   |
+|delivery_fee  |integer    |null: false                   |
+|shipping_area |string     |null: false                   |
+|days_to_ship  |date       |null: false                   |
 |explanation   |text       |null: false                   |
 |status        |text       |null: false                   |
 |user_id       |references |null: false, foreign_key: true|
@@ -29,7 +35,7 @@ FurimaのER図
 ### Association
 
 - belongs_to :user
-- has_many :purchases
+- has_one :purchase
 
 ## purchaseテーブル
 
@@ -43,14 +49,13 @@ FurimaのER図
 - belongs_to :user
 - belongs_to :item
 - has_one :shipping_address
-- has_one :credit
 
 ## shipping_addressテーブル
 
 | Column           | Type      | Options                       |
 |-------------     |-------    |------------------------------ |
 |postal_code       |integer    |null: false                    |
-|prefecture        |string     |null: false                    |
+|prefecture_id     |integer    |null: false                    |
 |municipality      |string     |null: false                    |
 |address           |integer    |null: false                    |
 |building_name     |text       |                               |
@@ -61,18 +66,9 @@ FurimaのER図
 
 - belongs_to :purchase
 
-## creditテーブル
 
-| Column           | Type      | Options                       |
-|-------------     |-------    |------------------------------ |
-|card_number       |integer    |null: false                    |
-|expiration date   |date       |null: false                    |
-|security_code     |integer    |null: false                    |
-|purchase          |reference  |null: false, foreign_key: true |
 
-### association
 
-- belongs_to :purchase
 
 
   
