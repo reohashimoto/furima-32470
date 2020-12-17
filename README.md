@@ -75,3 +75,4 @@ FurimaのER図
 - belongs_to :purchase
 
 
+  
