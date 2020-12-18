@@ -20,17 +20,17 @@ FurimaのER図
 
 ## itemsテーブル
 
-| Column          | Type         | Options                      |
-|-------------    |-----------   |----------------------------- |
-|product_name     |string        |null: false                   |
-|category         |string        |null: false                   |
-|price            |integer       |null: false                   |
-|delivery_fee     |integer       |null: false                   |
-|shipping_area_id |integer       |null: false                   |
-|days_to_ship_id  |integer       |null: false                   |
-|explanation_id   |integer       |null: false                   |
-|status_id        |integer       |null: false                   |
-|user             |references    |null: false, foreign_key: true|
+| Column             | Type         | Options                      |
+|----------------    |-----------   |----------------------------- |
+|product_name        |string        |null: false                   |
+|item_category       |string        |null: false                   |
+|price               |integer       |null: false                   |
+|delivery_fee_id     |integer       |null: false                   |
+|shipping_area_id    |integer       |null: false                   |
+|days_to_ship_id     |integer       |null: false                   |
+|item_explanation_id |integer       |null: false                   |
+|status_id           |integer       |null: false                   |
+|user                |references    |null: false, foreign_key: true|
 
 ### Association
 
