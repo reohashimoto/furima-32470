@@ -23,12 +23,12 @@ FurimaのER図
 | Column             | Type         | Options                      |
 |----------------    |-----------   |----------------------------- |
 |product_name        |string        |null: false                   |
-|item_category       |string        |null: false                   |
+|item_category_id    |integer       |null: false                   |
 |price               |integer       |null: false                   |
 |delivery_fee_id     |integer       |null: false                   |
 |shipping_area_id    |integer       |null: false                   |
 |days_to_ship_id     |integer       |null: false                   |
-|item_explanation_id |integer       |null: false                   |
+|item_explanation    |text          |null: false                   |
 |status_id           |integer       |null: false                   |
 |user                |references    |null: false, foreign_key: true|
 
