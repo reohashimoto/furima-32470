@@ -10,4 +10,5 @@ class User < ApplicationRecord
          validates :name_kana_mei, presence: true
          validates :birthday, presence: true
          has_many :items
+         
 end
