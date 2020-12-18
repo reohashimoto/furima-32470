@@ -16,26 +16,26 @@ FurimaのER図
 ### Association
 
 - has_many :items
-- has_many :purchase
+- has_many :purchases
 
 ## itemsテーブル
 
-| Column         | Type         | Options                      |
-|-------------   |-----------   |----------------------------- |
-|product_name    |string        |null: false                   |
-|category        |string        |null: false                   |
-|price           |integer       |null: false                   |
-|delivery_fee    |integer       |null: false                   |
-|shipping_area   |string        |null: false                   |
-|days_to_ship_id |integer       |null: false                   |
-|explanation_id  |integer       |null: false                   |
-|status_id       |integer       |null: false                   |
-|user_id         |references    |null: false, foreign_key: true|
+| Column          | Type         | Options                      |
+|-------------    |-----------   |----------------------------- |
+|product_name     |string        |null: false                   |
+|category         |string        |null: false                   |
+|price            |integer       |null: false                   |
+|delivery_fee     |integer       |null: false                   |
+|shipping_area_id |integer       |null: false                   |
+|days_to_ship_id  |integer       |null: false                   |
+|explanation_id   |integer       |null: false                   |
+|status_id        |integer       |null: false                   |
+|user             |references    |null: false, foreign_key: true|
 
 ### Association
 
 - belongs_to :user
-- has_one :purchases
+- has_one :purchase
 
 ## purchaseテーブル
 
@@ -54,12 +54,12 @@ FurimaのER図
 
 | Column           | Type      | Options                       |
 |-------------     |-------    |------------------------------ |
-|postal_code       |integer    |null: false                    |
+|postal_code       |string     |null: false                    |
 |prefecture_id     |integer    |null: false                    |
 |municipality      |string     |null: false                    |
-|address           |integer    |null: false                    |
-|building_name     |text       |                               |
-|telephone_number  |integer    |null: false                    |
+|address           |string     |null: false                    |
+|building_name     |string     |                               |
+|telephone_number  |string    |null: false                    |
 |purchase          |references |null: false, foreign_key: true |
 
 ### Association
