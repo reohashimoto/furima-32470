@@ -7,10 +7,10 @@ FurimaのER図
 |email                |string  |null: false, unique: true |
 |encrypted_password   |string  |null: false               |
 |nickname             |string  |null: false               |
-|name(姓)              |string  |null: false              |
-|name(名)              |string  |null:false               |
-|name(セイ)            |string  |null:false                |
-|name(メイ)            |string  |null:false                |
+|name_kanji_sei       |string  |null: false               |
+|name_kanji_mei       |string  |null:false                |
+|name_kana_sei        |string  |null:false                |
+|name_kana_mei        |string  |null:false                |
 |birthday             |date    |null: false               |
 
 ### Association
@@ -20,22 +20,22 @@ FurimaのER図
 
 ## itemsテーブル
 
-| Column       | Type      | Options                      |
-|------------- |-------    |----------------------------- |
-|product_name  |text       |null: false                   |
-|category      |string     |null: false                   |
-|price         |integer    |null: false                   |
-|delivery_fee  |integer    |null: false                   |
-|shipping_area |string     |null: false                   |
-|days_to_ship  |date       |null: false                   |
-|explanation   |text       |null: false                   |
-|status        |text       |null: false                   |
-|user_id       |references |null: false, foreign_key: true|
+| Column         | Type         | Options                      |
+|-------------   |-----------   |----------------------------- |
+|product_name    |string        |null: false                   |
+|category        |string        |null: false                   |
+|price           |integer       |null: false                   |
+|delivery_fee    |integer       |null: false                   |
+|shipping_area   |string        |null: false                   |
+|days_to_ship_id |integer       |null: false                   |
+|explanation_id  |integer       |null: false                   |
+|status_id       |integer       |null: false                   |
+|user_id         |references    |null: false, foreign_key: true|
 
 ### Association
 
 - belongs_to :user
-- has_one :purchase
+- has_one :purchases
 
 ## purchaseテーブル
 
