@@ -93,7 +93,7 @@ describe '出品機能' do
       @item.valid?
       expect(@item.errors.full_messages).to include("Price price can't be blank")
     end
-    it "価格が300以下であると出品できない" do
+    it "価格が299以下であると出品できない" do
       @item.price = 299
       @item.valid?
       expect(@item.errors.full_messages).to include("Price price can't be blank")

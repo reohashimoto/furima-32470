@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :show]
   before_action :authenticate_user!, excect: [:index]
   def index
-    @items = Item.all
+     #@items = Item.all
   end
 
   def new
