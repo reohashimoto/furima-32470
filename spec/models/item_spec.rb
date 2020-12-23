@@ -38,7 +38,7 @@ describe '出品機能' do
     end
 
     it "カテゴリーの情報がないと出品できない" do
-      @item.item_category_id = "1"
+      @item.item_category_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Item category can't be blank")
     end
@@ -50,7 +50,7 @@ describe '出品機能' do
     end
 
     it "商品の状態についての情報がないと出品できない" do
-      @item.product_condition_id = "1"
+      @item.product_condition_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Product condition can't be blank")
     end
@@ -62,7 +62,7 @@ describe '出品機能' do
     end
 
     it "配送料の負担についての情報がないと出品できない" do
-      @item.delivery_fee_id = "1"
+      @item.delivery_fee_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Delivery fee can't be blank")
     end
@@ -74,7 +74,7 @@ describe '出品機能' do
     end
 
     it "発送元の地域についての情報がないと出品できないこと" do
-      @item.shipping_area_id = "1"
+      @item.shipping_area_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Shipping area can't be blank")
     end
@@ -84,7 +84,7 @@ describe '出品機能' do
       expect(@item.errors.full_messages).to include("Days to ship can't be blank")
     end
     it "発送までの日数についての情報がないと出品できない"
-      @item.days_to_ship_id = "1"
+      @item.days_to_ship_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include("Days to ship can't be blank")
     end
