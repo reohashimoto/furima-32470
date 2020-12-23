@@ -24,11 +24,13 @@ describe '出品機能' do
       @item.valid?
       expect(@item.errors.full_messages).to include("Product name can't be blank")
     end
+
     it "商品の説明がないと出品できない" do
       @item.item_explanation = ""
       @item.valid?
       expect(@item.errors.full_messages).to include("Item explanation can't be blank")
     end
+
     it "カテゴリーの情報がないと出品できない" do
       @item.item_category_id = ""
       @item.valid?
@@ -52,7 +54,7 @@ describe '出品機能' do
       @item.valid?
       expect(@item.errors.full_messages).to include("Product condition can't be blank")
     end
-    
+
     it "配送料の負担についての情報がないと出品できない" do
       @item.delivery_fee_id = ""
       @item.valid?
@@ -96,11 +98,11 @@ describe '出品機能' do
       @item.valid?
       expect(@item.errors.full_messages).to include("Price price can't be blank")
     end
-    it "価格が10000000以上であると出品できない" do
-      item.price = 10000000
-      item.valid?
-      expect(@item.errors.full_messages).to include("Price price can't be blank")
+      it "価格が10000000以上であると出品できない" do
+        item.price = 10000000
+        item.valid?
+        expect(@item.errors.full_messages).to include("Price price can't be blank")
+      end
     end
   end
-end
 end
