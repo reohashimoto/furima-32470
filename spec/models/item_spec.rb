@@ -64,13 +64,16 @@ describe '出品機能' do
       @item.valid?
       expect(@item.errors.full_messages).to include("Price price can't be blank")
     end
-    it "価格が300〜9,999,999円の間出ないと出品できないこと" do
+    it "価格が300以下であると出品できない" do
       @item.price = 299
-      @item.price = 10000000
       @item.valid?
       expect(@item.errors.full_messages).to include("Price price can't be blank")
     end
-    
+    it "価格が10000000以上であると出品できない" do
+      item.price = 10000000
+      item.valid?
+      expect(@item.errors.full_messages).to include("Price price can't be blank")
+    end
   end
 end
 end
