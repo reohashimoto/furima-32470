@@ -1,9 +1,9 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :show]
-  before_action :authenticate_user!
-  #def index
-    #@items = Item.all
-  #end
+  before_action :authenticate_user!, expect: [:index]
+  def index
+    @items = Item.all
+  end
 
   def new
     @item = Item.new
@@ -16,11 +16,11 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-  def edit
-  end
+  #def edit
+  #end
 
-  def show
-  end
+  #def show
+  #end
 
   private
   def item_params
