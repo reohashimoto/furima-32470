@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   validates :product_name
   validates :item_category_id, numericality: { order_than: 1 }
   validates :product_condition_id, numericality: { order_than: 1 } 
-  validates_inclusion_of :price, in: 300..9999999, message: "price can't be blank"
+  validates_inclusion_of :price, in: 300..9999999
   validates :delivery_fee_id, numericality: { order_than: 1 }
   validates :shipping_area_id, numericality: { order_than: 1 }
   validates :days_to_ship_id, numericality: { order_than: 1 }
