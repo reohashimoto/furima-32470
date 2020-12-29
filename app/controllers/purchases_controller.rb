@@ -30,7 +30,7 @@ class PurchasesController < ApplicationController
     @item = Item.find(params[:item_id])
   end
   def move_to_index
-    if current_user.id == @item.user.id
+    if current_user.id == @item.user.id || @item.purchase_address != nil
       redirect_to action: :index
     end
   end

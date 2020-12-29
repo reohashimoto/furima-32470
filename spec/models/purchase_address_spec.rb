@@ -9,6 +9,11 @@ RSpec.describe PurchaseAddress, type: :model do
     it "全ての情報が正しく入力されていれば出品できる" do
       expect(@purchase_address).to be_valid
     end
+    it '建物名が空でも購入できること' do
+      @purchase_address.building_name = nil
+      @purchase_address.valid?
+      expect(@purchase_address).to be_valid
+    end
     end
     context '商品購入ができない時' do
     it 'postal_codeが空だと登録できない' do
@@ -69,6 +74,15 @@ RSpec.describe PurchaseAddress, type: :model do
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
     end
+    it 'user_idが空だと登録できない' do
+      @purchase_address.user_id = nil
+      @purchase_address.valid?
+      expect(@purchase_address.errors.full_messages).to include("User can't be blank")
+    end
+    it 'item_idが空だと登録できない' do
+      @purchase_address.item_id = nil
+      @purchase_address.valid?
+      expect(@purchase_address.errors.full_messages).to include("Item can't be blank")
     end
   end
 end
