@@ -5,16 +5,18 @@ RSpec.describe PurchaseAddress, type: :model do
     before do
       @purchase_address = FactoryBot.build(:purchase_address)
     end
-
+    context '商品購入ができる時' do
     it "全ての情報が正しく入力されていれば出品できる" do
       expect(@purchase_address).to be_valid
     end
-
+    end
+    context '商品購入ができない時' do
     it 'postal_codeが空だと登録できない' do
       @purchase_address.postal_code = nil
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Postal code can't be blank")
     end
+  
 
     it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
       @purchase_address.postal_code = '1234567'
@@ -27,7 +29,7 @@ RSpec.describe PurchaseAddress, type: :model do
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Prefecture can't be blank")
     end
-    
+
     it "都道府県の値が１だと登録できない"
       @purchase_address.prefecture_id = 1
       @purchase_address.valid?
@@ -49,21 +51,25 @@ RSpec.describe PurchaseAddress, type: :model do
     it '電話番号が空だと登録できない' do
       @purchase_address.telephone_number = nil
       @purchase_address.valid?
-      expect(@purchase_address.errors.full_messages).to include("Telephone number can't be blank", "Telephone number is invalid. Include hyphen(-)")
+      expect(@purchase_address.errors.full_messages).to include("Telephone number can't be blank", "Telephone number is invalid.")
     end
 
     it '電話番号が１１文字いないであること' do
       @purchase_address.telephone_number = "111111111111"
       @purchase_address.valid?
-      expect(@purchase_address.errors.full_messages).to include("Telephone number is invalid. Include hyphen(-)")
+      expect(@purchase_address.errors.full_messages).to include("Telephone number is invalid.")
     end
-
+    it 'ハイフンが入力されている場合は購入できないこと' do
+      @purchase_address.telephone_number = "-"
+      @purchase_address.valid?
+      expect(@purchase_address.to.errors.full_messages).to include("Telephone number is invalid")
+    end
     it "tokenが空では登録できないこと" do
       @purchase_address.token = nil
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
     end
-
+    end
   end
 end
     
