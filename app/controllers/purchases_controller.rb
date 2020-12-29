@@ -1,11 +1,11 @@
 class PurchasesController < ApplicationController
+  before_action :set_item, only: [:index, :create]
+  before_action :move_to_index, only: [:index]
     def index
-      @item = Item.find(params[:item_id])
       @purchase_address = PurchaseAddress.new
     end
     def create
       @purchase_address = PurchaseAddress.new(address_params)
-      @item = Item.find(params[:item_id])
       if @purchase_address.valid?
        pay_item
         @purchase_address.save
@@ -25,5 +25,13 @@ class PurchasesController < ApplicationController
       card: address_params[:token],    
       currency: 'jpy'                
     )
+  end
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+  def move_to_index
+    if current_user.id == @item.user.id
+      redirect_to action: :index
+    end
   end
 end

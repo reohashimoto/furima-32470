@@ -27,6 +27,12 @@ RSpec.describe PurchaseAddress, type: :model do
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Prefecture can't be blank")
     end
+    
+    it "都道府県の値が１だと登録できない"
+      @purchase_address.prefecture_id = 1
+      @purchase_address.valid?
+      expect(@purchase_address.errors.full_messages).to include("Prefecture can't be blank")
+    end
 
     it '市区町村が空では登録できない' do
       @purchase_address.municipality = nil
@@ -47,7 +53,7 @@ RSpec.describe PurchaseAddress, type: :model do
     end
 
     it '電話番号が１１文字いないであること' do
-      @purchase_address.telephone_number = 111111111111
+      @purchase_address.telephone_number = "111111111111"
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Telephone number is invalid. Include hyphen(-)")
     end
