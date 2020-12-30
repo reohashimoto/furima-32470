@@ -20,6 +20,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    if @item != nil
+      redirect_to root_path
+    end
   end
 
   def show
