@@ -7,12 +7,12 @@ class PurchaseAddress
     validates :prefecture_id, numericality: { order_than: 1 }
     validates :municipality, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "is invalid. Input full-width characters." }
     validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)" }
-    validates :telephone_number, format: { with: /\A[0-9]{3}[0-9]{4}[0-9]{4}\z/, message: "is invalid. Include hyphen(-)" }
+    validates :telephone_number, format: { with: /\A[0-9]{3}[0-9]{4}[0-9]{4}\z/, message: "is invalid." }
     validates :token
     validates :user_id
     validates :item_id
   end
-  validates :building_name, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  
 
  def save
   purchase = Purchase.create(user_id: user_id, item_id: item_id)
