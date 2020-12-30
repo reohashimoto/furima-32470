@@ -38,11 +38,11 @@ RSpec.describe PurchaseAddress, type: :model do
       expect(@purchase_address.errors.full_messages).to include("Prefecture can't be blank")
     end
 
-    #it "都道府県の値が１だと登録できない" do
-      #@purchase_address.prefecture_id = 1
-      #@purchase_address.valid?
-      #expect(@purchase_address.errors.full_messages).to include("Prefecture can't be blank")
-    #end
+    it "都道府県の値が１だと登録できない" do
+      @purchase_address.prefecture_id = 1
+      @purchase_address.valid?
+      expect(@purchase_address.errors.full_messages).to include("Prefecture Select")
+    end
 
     it '市区町村が空では登録できない' do
       @purchase_address.municipality = nil
@@ -67,7 +67,11 @@ RSpec.describe PurchaseAddress, type: :model do
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Telephone number is invalid.")
     end
-
+    it '電話番号は、英数混合では登録できないこと' do
+      @purchase_address.telephone_number = "1a1a1a1a1a1"
+      @purchase_address.valid?
+      expect(@purchase_address.errors.full_messages).to include("Telephone number is invalid.")
+    end
     it 'ハイフンが入力されている場合は購入できないこと' do
       @purchase_address.telephone_number = "080-1234-5678"
       @purchase_address.valid?
