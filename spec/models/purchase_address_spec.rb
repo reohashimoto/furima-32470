@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe PurchaseAddress, type: :model do
   describe 'カード情報と住所の保存' do
     before do
-      @purchase_address = FactoryBot.build(:purchase_address)
+      @purchase_address = FactoryBot.build(:purchase_address, user_id:1, item_id:2) 
     end
 
     context '商品購入ができる時' do
